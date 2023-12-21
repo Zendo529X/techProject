@@ -13,6 +13,7 @@ def pyramid(n):
 
 # 列印樹身
 def pri(n, m):
+    data = ''
     tempN = n
     tempM = m
 
@@ -26,19 +27,32 @@ def pri(n, m):
 
             if tempN != tempM:
                 for y in range(R):
+                    data += " "
                     print(" ", end="")
+                data += "\n"
             else:
                 for y in range(Q):
+                    data += " "
                     print(" ", end="")
+                data += "\n"
             for t in range(x):
+                data += "^"
                 print("^", end="")
+
             print("")
+            data += "\n"
+    return data
 
 
 # 列印樹幹
 def priTrunk(n):
+    data = ''
     for x in range(n):
         if x != n - 1:
+            data += " "
             print(" ", end="")
         else:
+            data += "*"
             print("*")
+    data += "\n"
+    return data
