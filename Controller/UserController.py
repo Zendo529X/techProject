@@ -4,3 +4,14 @@
 # @Site :
 # @File : UserController.py
 # @Software: Pycharm
+from flask_restplus import Namespace, Resource, fields
+
+api = Namespace('user', description='user Data')
+
+@api.route('',methods=["GET", "POST", "DELETE", "PUT"])
+class UserController(Resource):
+
+    @api.route("/")
+    class createUser(Resource):
+        def post(self):
+            return
