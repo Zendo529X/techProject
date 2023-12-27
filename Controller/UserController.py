@@ -4,7 +4,7 @@
 # @Site :
 # @File : UserController.py
 # @Software: Pycharm
-from flask_restplus import Namespace, Resource, fields
+from flask_restx import Namespace, Resource, fields
 
 api = Namespace('user', description='user Data')
 
