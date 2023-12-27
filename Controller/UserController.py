@@ -8,10 +8,15 @@ from flask_restx import Namespace, Resource, fields
 
 api = Namespace('user', description='user Data')
 
-@api.route('',methods=["GET", "POST", "DELETE", "PUT"])
-class UserController(Resource):
 
+@api.route('', methods=["GET", "POST", "DELETE", "PUT"])
+class UserController(Resource):
     @api.route("/")
     class createUser(Resource):
         def post(self):
             return
+
+    @api.route("/getUser")
+    class getUser(Resource):
+        def get(self):
+            return 'hello get user'
