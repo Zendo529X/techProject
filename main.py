@@ -25,6 +25,8 @@ def initRouting(app):
 def exposeAPIs(pApi):
     from Controller.UserController import api as user
     from Controller.TreeController import api as tree
+    pApi.add_namespace(user)
+    pApi.add_namespace(tree)
 
 @app.route('/')
 def hello_world():
@@ -48,7 +50,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%(user)s:\
 %(pw)s@%(host)s:%(port)s/%(db)s' % MYSQL
 
 db.init_app(app)
-
+initRouting(app)
 
 # app.before_request_funcs = [(None, my_fun())]
 
