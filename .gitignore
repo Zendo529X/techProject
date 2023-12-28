@@ -1,2 +1,12 @@
+# venv
 venv/
+
+# Rope project settings
+.ropeproject
+.idea
 .idea/
+.azure/
+.DS_Store
+.vscode/
+.vscode
+__pycache__/
