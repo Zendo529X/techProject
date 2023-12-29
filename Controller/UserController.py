@@ -5,8 +5,11 @@
 # @File : UserController.py
 # @Software: Pycharm
 from flask_restx import Namespace, Resource, fields
+from Service.UserService import UserService
+from model.Users import Users
 
 api = Namespace('user', description='user Data')
+
 
 
 @api.route('', methods=["GET", "POST", "DELETE", "PUT"])
@@ -16,7 +19,10 @@ class UserController(Resource):
         def post(self):
             return
 
-    @api.route("/getUser")
+    @api.route("/")
     class getUser(Resource):
         def get(self):
-            return 'hello get user'
+            return UserService.getUser(self)
+
+
+            # return 'hello get user'
