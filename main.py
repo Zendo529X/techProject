@@ -32,7 +32,7 @@ def exposeAPIs(pApi):
 
 
 # for test api routing
-@app.route('/')
+@app.route('/hello')
 def hello_world():
     return 'Hello World123!'
 
