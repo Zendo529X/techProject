@@ -62,10 +62,13 @@ db.init_app(app)
 # 初始化 API路由
 initRouting(app)
 
-if __name__ == '__main__':
+def createDbTable():
     with app.app_context():
         db.drop_all()
         db.create_all()
+
+if __name__ == '__main__':
+    # createDbTable()
     app.run(debug=True)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
