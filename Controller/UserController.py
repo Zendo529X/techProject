@@ -33,3 +33,8 @@ class UserController(Resource):
     def post(self):
         data = request.get_json()
         return userService.createUser(data)
+
+    @api.expect(user_model)
+    def put(self):
+        data = request.get_json()
+        return userService.updateUser(data)
