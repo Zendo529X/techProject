@@ -50,6 +50,7 @@ class UploadFileService:
             for c in range(0, totalColumn):
                 columnName = columnNames[c]
                 data = None
+                # data = rowdata[columnName]
                 if columnName in stringColumn:
                     data = str(rowdata[columnName]) if (
                                 ('nan' != str(rowdata[columnName])) or not math.isnan(rowdata[columnName])) else ''
@@ -58,6 +59,8 @@ class UploadFileService:
                 # data = rowdata[columnName]
                 ####get all column name
                 # aa = ACPnL.__table__.columns.keys()
+                if columnName.find('-'):
+                    columnName=columnName.replace('-','_')
                 acpnl.__setattr__(columnName, data)
             acpnl.create(acpnl)
             logger.info("ok")
@@ -86,6 +89,8 @@ class UploadFileService:
                 # data = rowdata[columnName]
                 ####get all column name
                 # aa = ACPnL.__table__.columns.keys()
+                if columnName.find('-'):
+                    columnName=columnName.replace('-','_')
                 afpnl.__setattr__(columnName, data)
             afpnl.create(afpnl)
             logger.info("ok")
