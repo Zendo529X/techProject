@@ -27,8 +27,10 @@ def initRouting(app):
 def exposeAPIs(pApi):
     from Controller.UserController import api as user
     from Controller.TreeController import api as tree
+    from Controller.UploadFileController import api as upload
     pApi.add_namespace(user)
     pApi.add_namespace(tree)
+    pApi.add_namespace(upload)
 
 
 # for test api routing
@@ -44,7 +46,7 @@ def getXmasTree():
     return service.getXmasTree()
 
 
-# mysql的參數
+# mysql sample 的參數
 MYSQL = {
     'user': os.getenv('DB_USERNAME', 'dbAdmin'),
     'pw': os.getenv('DB_PWD', 'P$ssw0rd'),
@@ -52,6 +54,15 @@ MYSQL = {
     'host': os.getenv('DB_HOST', 'techdb.mysql.database.azure.com'),
     'port': os.getenv('DB_PORT', '3306'),
 }
+
+# # mysql CM 的參數
+# MYSQL = {
+#     'user': os.getenv('DB_USERNAME', 'dbAdmin'),
+#     'pw': os.getenv('DB_PWD', 'P$ssw0rd'),
+#     'db': os.getenv('DB_NAME', 'CM'),
+#     'host': os.getenv('DB_HOST', 'techdb.mysql.database.azure.com'),
+#     'port': os.getenv('DB_PORT', '3306'),
+# }
 
 # 設定mysql連結
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%(user)s:\
