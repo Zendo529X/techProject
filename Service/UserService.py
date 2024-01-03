@@ -6,7 +6,10 @@
 # @Software: Pycharm
 
 from model.Users import Users
+from model.ACPnL import ACPnL
+from model.AFPnL import AFPnL
 from utils.ApiResponse import *
+from datetime import datetime
 
 
 # todo add user service
@@ -48,8 +51,29 @@ class UserService:
                 user.create(user)
                 return ApiResponse.emitSuccessOutput("create user successes")
 
-    def updateUser(self):
-        return
+    def updateUser(self,data):
+        id = data.get('id', None)
+        cell_phone = data.get('cell_phone', None)
+        name = data.get('name', None)
+        email = data.get('email', None)
+        if id is not None or cell_phone is not None:
+            user = None
+            if id is not None:
+                user = self.getUserById(id)
+            elif cell_phone is not None:
+                user = self.getUserByPhone(cell_phone)
+
+            if user is None:
+                return ApiResponse.emitErrorOutput(E_QUERY_FAIL, "data not existed", "user not existed")
+            else:
+
+                user = self.getUserById(id)
+                user.name = name
+                user.email = email
+                user.cell_phone = cell_phone
+                user.update_at = datetime.now()
+                Users.update(user)
+                return ApiResponse.emitSuccessOutput("create user successes")
 
     def delUser(self):
         return
