@@ -48,10 +48,12 @@ class UserService:
                 user.name = name
                 user.email = email
                 user.cell_phone = cell_phone
+                user.create_at = datetime.now()
+                user.update_at = datetime.now()
                 user.create(user)
                 return ApiResponse.emitSuccessOutput("create user successes")
 
-    def updateUser(self,data):
+    def updateUser(self, data):
         id = data.get('id', None)
         cell_phone = data.get('cell_phone', None)
         name = data.get('name', None)
