@@ -14,7 +14,7 @@ class Users(db.Model):
     name = db.Column(db.String(20))
     email = db.Column(db.String(50))
     cell_phone = db.Column(db.String(50))
-    status = db.Column(db.Boolean, default=False)
+    user_status = db.Column(db.Boolean, default=False)
     create_at = db.Column(db.DateTime, default=datetime.now())
     update_at = db.Column(db.DateTime, default=datetime.now())
 
