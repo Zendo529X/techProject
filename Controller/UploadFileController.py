@@ -10,8 +10,6 @@ from flask_restx import Namespace, Resource, fields
 from Service.UserService import *
 from Service.UploadFileService import *
 
-
-
 api = Namespace('uploadFile', description='user Data')
 
 user_model = api.model('user_model', {

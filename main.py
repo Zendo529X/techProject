@@ -73,10 +73,12 @@ db.init_app(app)
 # 初始化 API路由
 initRouting(app)
 
+
 def createDbTable():
     with app.app_context():
         db.drop_all()
         db.create_all()
+
 
 if __name__ == '__main__':
     # createDbTable()
