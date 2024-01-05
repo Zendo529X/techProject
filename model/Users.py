@@ -14,9 +14,9 @@ class Users(db.Model):
     name = db.Column(db.String(20))
     email = db.Column(db.String(50))
     cell_phone = db.Column(db.String(50))
-    user_status = db.Column(db.Boolean, default=False)
-    create_at = db.Column(db.DateTime, default=datetime.now())
-    update_at = db.Column(db.DateTime, default=datetime.now())
+    user_del_status = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
     def __repr__(self):
         return '<USERS %r>' % self.id

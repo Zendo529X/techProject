@@ -4,12 +4,15 @@
 # @Site :
 # @File : UserController.py
 # @Software: Pycharm
+import logging
+
 from flask import request
 from flask_restx import Namespace, Resource, fields
 from Service.UserService import *
 from model.Users import Users
 
 api = Namespace('user', description='user Data')
+logger = logging.getLogger(__name__)
 
 user_model = api.model('user_model', {
     'id': fields.Integer(required=False, description="id", help="id can be blank."),
@@ -38,3 +41,8 @@ class UserController(Resource):
     def put(self):
         data = request.get_json()
         return userService.updateUser(data)
+
+    @api.expect(user_model)
+    def delete(self):
+        data = request.get_json()
+        return userService.delUser(data)
