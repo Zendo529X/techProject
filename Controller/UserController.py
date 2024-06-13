@@ -10,6 +10,7 @@ from flask import request
 from flask_restx import Namespace, Resource, fields
 from Service.UserService import *
 from model.Users import Users
+from utils import ApiResponse
 
 api = Namespace('user', description='user Data')
 logger = logging.getLogger(__name__)
@@ -28,6 +29,8 @@ class UserController(Resource):
 
     def get(self):
         return userService.getUser()
+
+        # return ApiResponse.emitSuccessOutput(data =userService.getUser())
 
         # return 'hello get user'
 

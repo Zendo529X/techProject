@@ -55,7 +55,7 @@ MYSQL = {
     'port': os.getenv('DB_PORT', '3306'),
 }
 
-# # mysql CM 的參數
+# mysql CM 的參數
 # MYSQL = {
 #     'user': os.getenv('DB_USERNAME', 'dbAdmin'),
 #     'pw': os.getenv('DB_PWD', 'P$ssw0rd'),
@@ -68,16 +68,23 @@ MYSQL = {
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://%(user)s:\
 %(pw)s@%(host)s:%(port)s/%(db)s' % MYSQL
 
+
+
+# 回收连接
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 1800
+# 每次执行sql前 悲观检查db是否可用;虽然资源稍微额外的消耗,但是简单可靠
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {'pool_pre_ping': True}
+
 # db啟動
 db.init_app(app)
 # 初始化 API路由
 initRouting(app)
 
 
-def createDbTable():
-    with app.app_context():
-        db.drop_all()
-        db.create_all()
+# def createDbTable():
+#     with app.app_context():
+#         db.drop_all()
+#         db.create_all()
 
 
 if __name__ == '__main__':
