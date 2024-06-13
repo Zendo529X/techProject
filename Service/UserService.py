@@ -11,6 +11,8 @@ from model.ACPnL import ACPnL
 from model.AFPnL import AFPnL
 from utils.ApiResponse import *
 from datetime import datetime
+import json
+from view.users import UsersSchema
 
 # todo add user service
 
@@ -20,7 +22,11 @@ logger = logging.getLogger(__name__)
 class UserService:
     def getUser(self):
         users = Users.query.all()
-        return users
+
+        schema = UsersSchema()
+        result = schema.dumps(users, many=True)
+        result = json.loads(result)
+        return ApiResponse.emitSuccessOutput(data=result)
 
     def getUserById(self, id):
         user = Users.query.filter(Users.id == id).first()
