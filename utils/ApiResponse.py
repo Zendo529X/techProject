@@ -138,8 +138,7 @@ class ApiResponse():
 
     # 
     @staticmethod
-
-    def emitErrorOutput(code,msg,source,httpcode=None,data={}):
+    def emitErrorOutput(code, msg, source, httpcode=None, data={}):
         data = {
             ERROR_TEXT: msg,
             ERROR_CODE: code,
@@ -186,7 +185,7 @@ class ApiResponse():
 
     @staticmethod
     def emitSuccessOutputWithCode(data, dataheader=None, httpcode=None, code=E_OPERATION_SUCCESS, msg='', pageSize=None,
-                          pageNo=None, totalPage=None, totalCount=None):
+                                  pageNo=None, totalPage=None, totalCount=None):
         if dataheader is None:
             data = {
                 "result": {

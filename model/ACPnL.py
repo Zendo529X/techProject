@@ -58,8 +58,6 @@ class ACPnL(db.Model):
     PTE_LB_direct = db.Column(db.Numeric)
     PCE_LB_direct = db.Column(db.Numeric)
 
-
-
     def __repr__(self):
         return '<ACPnL %r>' % self.id
 

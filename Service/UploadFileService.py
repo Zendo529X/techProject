@@ -53,14 +53,14 @@ class UploadFileService:
                 # data = rowdata[columnName]
                 if columnName in stringColumn:
                     data = str(rowdata[columnName]) if (
-                                ('nan' != str(rowdata[columnName])) or not math.isnan(rowdata[columnName])) else ''
+                            ('nan' != str(rowdata[columnName])) or not math.isnan(rowdata[columnName])) else ''
                 else:
                     data = rowdata[columnName] if not math.isnan(rowdata[columnName]) else random.randint(1, 10000)
                 # data = rowdata[columnName]
                 ####get all column name
                 # aa = ACPnL.__table__.columns.keys()
                 if columnName.find('-'):
-                    columnName=columnName.replace('-','_')
+                    columnName = columnName.replace('-', '_')
                 acpnl.__setattr__(columnName, data)
             acpnl.create(acpnl)
             logger.info("ok")
@@ -75,7 +75,7 @@ class UploadFileService:
         totalRow = len(rows)
         for i in range(0, totalRow):
             print(i)
-            afpnl= AFPnL()
+            afpnl = AFPnL()
             rowdata = rows.iloc[i]
             totalColumn = len(rowdata)
             for c in range(0, totalColumn):
@@ -90,7 +90,7 @@ class UploadFileService:
                 ####get all column name
                 # aa = ACPnL.__table__.columns.keys()
                 if columnName.find('-'):
-                    columnName=columnName.replace('-','_')
+                    columnName = columnName.replace('-', '_')
                 afpnl.__setattr__(columnName, data)
             afpnl.create(afpnl)
             logger.info("ok")
